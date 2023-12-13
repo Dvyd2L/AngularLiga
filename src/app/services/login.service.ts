@@ -13,10 +13,10 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(usuario: ILoginRequest): Observable<ILoginResponse> {
-    return this.http.post<ILoginResponse>(this.apiURL.href + 'Usuarios/login', usuario);
+    return this.http.post<ILoginResponse>(this.apiURL.href + 'login', usuario);
   }
 
   logout(): void {
-    localStorage.removeItem('usuario');
+    localStorage.removeItem(environment.userToken);
   }
 }

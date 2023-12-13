@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '@env/environment';
 import { AuthGuardService } from '@guards/auth-guard.service';
 import { ILoginRequest } from '@interfaces/login';
 import { LoginService } from '@services/login.service';
@@ -29,7 +30,7 @@ export class LoginComponent {
   login() {
     this.loginService.login(this.usuario).subscribe({
       next: (data) => {
-        localStorage.setItem('usuario', JSON.stringify(data));
+        localStorage.setItem(environment.userToken, JSON.stringify(data));
         this.router.navigateByUrl('equipos');
       },
       error: (err) => {

@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row mt-3">
+      <div class="col-10">
+        <h1>Equipos</h1>
+      </div>
+      <div class="col-2"> <button type="button" class="btn btn-info text-right" (click)="logout()">Cerrar
+          sesión</button></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>Agregar equipo</h2>
+        <form (submit)="addEquipo()">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="equipo.nombre">
+          </div>
+          <div class="mb-3">
+            <label for="ciudad" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad" name="ciudad" [(ngModel)]="equipo.ciudad">
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar equipo</button>
+        </form>
+      </div>
+      <hr class="row mt-4">
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                @for (equipo of equipos; track $index) {
+                    <tr>
+                        <td>{{ equipo.id }}</td>
+                        <td><input type="text" class="form-control" [(ngModel)]="equipo.nombre" /></td>
+                        <td><input type="text" class="form-control" [(ngModel)]="equipo.ciudad" /></td>
+                        <td>
+                          <button class="btn btn-warning mr-2" (click)="updateEquipo(equipo)">Actualizar</button>
+                          <button class="btn btn-danger mr-2" (click)="deleteEquipo(equipo)">Eliminar</button>
+                        </td>
+                    </tr>
+                } @empty {
+                  <tr><td>Empty</td></tr>
+                }
+              <!-- <tr *ngFor="let equipo of equipos">
+                <td>{{ equipo.id }}</td>
+                <td><input type="text" class="form-control" [(ngModel)]="equipo.nombre" /></td>
+                <td><input type="text" class="form-control" [(ngModel)]="equipo.ciudad" /></td>
+                <td>
+                  <button class="btn btn-warning mr-2" (click)="updateEquipo(equipo)">Actualizar</button>
+                  <button class="btn btn-danger mr-2" (click)="deleteEquipo(equipo)">Eliminar</button>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
