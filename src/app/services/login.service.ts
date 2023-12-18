@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(usuario: ILoginRequest): Observable<ILoginResponse> {
-    return this.http.post<ILoginResponse>(this.apiURL.href + 'login', usuario);
+    return this.http.post<ILoginResponse>(this.apiURL.href + 'api/Usuarios/login', usuario);
   }
 
   logout(): void {
